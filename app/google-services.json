@@ -1,0 +1,9 @@
+{
+  "web": {
+    "client_id": "224868827995-59ipirhaq9n1tt5u91f9i0504c5ce4i9.apps.googleusercontent.com",
+    "project_id": "android-app-1549462927739",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+  }
+}

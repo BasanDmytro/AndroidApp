@@ -22,6 +22,8 @@ import java.util.List;
 
 public class TabActivty extends AppCompatActivity {
 
+    public static final String GOOGLE_ACCOUNT = "google_account";
+
     BottomNavigationView navigation;
     MenuItem prevMenuItem;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

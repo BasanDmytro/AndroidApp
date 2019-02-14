@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -26,6 +27,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCKrhxjI6ptdmjdhyAMIi-wGRB22Mla0WM">
+        </meta-data>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version">
+        </meta-data>
+
         <activity
             android:name=".view.LoginActivity"
             android:label="@string/title_activity_login">
@@ -40,7 +50,11 @@
             android:label="@string/title_activity_tab_activty">
 
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <!--<activity android:name=".MainActivity"></activity>-->
     </application>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true">
+    </uses-feature>
 
 </manifest>
