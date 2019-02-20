@@ -1,6 +1,7 @@
 package com.example.application_jxf.view;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -32,13 +33,13 @@ public class TabActivty extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.navigation_map:
+                    viewPager.setCurrentItem(0);
+                    Toast.makeText(TabActivty.this, "2", Toast.LENGTH_SHORT).show();
+                    return true;
                 case R.id.navigation_home:
                     Toast.makeText(TabActivty.this, "1", Toast.LENGTH_SHORT).show();
-                    viewPager.setCurrentItem(0);
-                    return true;
-                case R.id.navigation_dashboard:
                     viewPager.setCurrentItem(1);
-                    Toast.makeText(TabActivty.this, "2", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_notifications:
                     Toast.makeText(TabActivty.this, "3", Toast.LENGTH_SHORT).show();
@@ -95,6 +96,7 @@ public class TabActivty extends AppCompatActivity {
             }
         });
         setupViewPager(viewPager);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     private void setupViewPager(ViewPager viewPager) {
