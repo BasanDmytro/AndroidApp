@@ -15,15 +15,19 @@ import android.widget.Toast;
 
 import com.example.application_jxf.R;
 import com.example.application_jxf.adapters.ViewPagerAdapter;
+import com.example.application_jxf.pojo.BookingItem;
 import com.example.application_jxf.view.fragments.MapFragment;
 import com.example.application_jxf.view.fragments.UserFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TabActivty extends AppCompatActivity {
 
     public static final String GOOGLE_ACCOUNT = "google_account";
+
+    public static final String PHOTO_URL = "https://www.worlds50bestbars.com/files/Listing/Images/1//American_Bar-Museum_Bar_2.jpg";
 
     BottomNavigationView navigation;
     MenuItem prevMenuItem;
@@ -102,12 +106,10 @@ public class TabActivty extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mapFragment = new MapFragment();
-        List<String> list = new ArrayList<>();
-        list.add("User1");
-        list.add("User2");
-        list.add("User3");
-        list.add("User4");
-        list.add("User5");
+        List<BookingItem> list = new ArrayList<>();
+        list.add(new BookingItem("Booking1", "", new Date(), PHOTO_URL));
+        list.add(new BookingItem("Booking2", "", new Date(), PHOTO_URL));
+        list.add(new BookingItem("Booking3", "", new Date(), PHOTO_URL));
         userFragment = UserFragment.newInstance(list);
 //        fragmentNavigationDrawer = new FragmentNavigationDrawer();
         viewPagerAdapter.addFragment(mapFragment);

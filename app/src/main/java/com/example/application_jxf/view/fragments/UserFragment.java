@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.application_jxf.R;
 import com.example.application_jxf.adapters.UserReservesAdapter;
+import com.example.application_jxf.pojo.BookingItem;
 import com.example.application_jxf.view.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,7 +33,7 @@ import static com.example.application_jxf.view.TabActivty.GOOGLE_ACCOUNT;
 
 public class UserFragment extends Fragment {
 
-    private List<String> list;
+    private List<BookingItem> list;
     private View view;
     private UserReservesAdapter adapter;
     private RecyclerView recyclerView;
@@ -43,7 +44,7 @@ public class UserFragment extends Fragment {
 
     private GoogleSignInClient googleSignInClient;
 
-    public static UserFragment newInstance(List<String> data) {
+    public static UserFragment newInstance(List<BookingItem> data) {
         UserFragment fragment = new UserFragment();
         fragment.list = data;
         return fragment;
