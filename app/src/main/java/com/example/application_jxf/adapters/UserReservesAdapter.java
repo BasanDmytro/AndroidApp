@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.application_jxf.R;
+import com.example.application_jxf.dao.ResturantDAO;
 import com.example.application_jxf.pojo.BookingItem;
 import com.squareup.picasso.Picasso;
 
@@ -38,14 +39,21 @@ public class UserReservesAdapter extends RecyclerView.Adapter<UserReservesAdapte
 
     @Override
     public void onBindViewHolder(@NonNull BookingHolder bookingHolder, int i) {
-        BookingItem item = list.get(i);
+        final BookingItem item = list.get(i);
         long timeTo = item.getHour()+item.getDuration();
-        String bookingTime = item.getBookingDate().toLocaleString() + " From " + item.getHour() + " To " + timeTo;
+        String bookingTime = item.getBookingDate().getDay() + "." + item.getBookingDate().getMonth()
+                + "." + item.getBookingDate().getYear() + " From " + item.getHour() + " To " + timeTo;
         String bookingName = item.getRestourantName() + " table #" + item.getTableNumber();
         bookingHolder.bookingTime.setText(bookingTime);
         bookingHolder.bookingName.setText(bookingName);
         Picasso.get().load(item.getUrl())
                 .centerInside().fit().into(bookingHolder.img);
+        bookingHolder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ResturantDAO.getInstance().removeBookingItem(item);
+            }
+        });
     }
 
     @Override
@@ -65,7 +73,13 @@ public class UserReservesAdapter extends RecyclerView.Adapter<UserReservesAdapte
             bookingName = itemView.findViewById(R.id.bookingName);
             bookingTime = itemView.findViewById(R.id.bookingTime);
             img = itemView.findViewById(R.id.booking_image);
-
+            button = itemView.findViewById(R.id.booking_vid);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    ResturantDAO.getInstance().removeBookingItem();
+//                }
+//            });
         }
     }
 }

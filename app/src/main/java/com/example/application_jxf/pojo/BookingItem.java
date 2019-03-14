@@ -12,6 +12,8 @@ public class BookingItem {
     private int tableNumber;
     private String url;
 
+    public BookingItem() {}
+
     public BookingItem(String restourantName, int hour, int duration, Date bookingDate, int tableNumber, String url) {
         this.restourantName = restourantName;
         this.hour = hour;

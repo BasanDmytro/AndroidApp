@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.application_jxf.R;
 import com.example.application_jxf.adapters.UserReservesAdapter;
+import com.example.application_jxf.dao.ResturantDAO;
 import com.example.application_jxf.pojo.BookingItem;
 import com.example.application_jxf.view.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -47,8 +48,18 @@ public class UserFragment extends Fragment {
 
     public static UserFragment newInstance(List<BookingItem> data) {
         UserFragment fragment = new UserFragment();
-        fragment.list = data;
+//        fragment.list = data;
         return fragment;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            // Refresh your fragment here
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            Log.i("IsRefresh", "Yes");
+        }
     }
 
     @Nullable
@@ -63,7 +74,7 @@ public class UserFragment extends Fragment {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
 
-        Log.e("onCreateView: ", list.toString());
+//        Log.e("onCreateView: ", list.toString());
         profileName = view.findViewById(R.id.profile_text);
         profileEmail = view.findViewById(R.id.profile_email);
         profileImage = view.findViewById(R.id.profile_image);
@@ -88,7 +99,8 @@ public class UserFragment extends Fragment {
             }
         });
 
-        adapter = new UserReservesAdapter(list, getContext());
+        adapter = new UserReservesAdapter(ResturantDAO.getInstance().getBookingItems(), getContext());
+        adapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         setDataOnView();

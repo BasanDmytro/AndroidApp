@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,14 +42,9 @@ public class TabActivty extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_map:
                     viewPager.setCurrentItem(0);
-                    Toast.makeText(TabActivty.this, "2", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_home:
-                    Toast.makeText(TabActivty.this, "1", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(1);
-                    return true;
-                case R.id.navigation_notifications:
-                    Toast.makeText(TabActivty.this, "3", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
@@ -109,10 +105,8 @@ public class TabActivty extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mapFragment = MapFragment.newInstance(ResturantDAO.getInstance().getRestourantItems());
         userFragment = UserFragment.newInstance(ResturantDAO.getInstance().getBookingItems());
-//        fragmentNavigationDrawer = new FragmentNavigationDrawer();
         viewPagerAdapter.addFragment(mapFragment);
         viewPagerAdapter.addFragment(userFragment);
-//        viewPagerAdapter.addFragment(fragmentNavigationDrawer);
         viewPager.setAdapter(viewPagerAdapter);
     }
 

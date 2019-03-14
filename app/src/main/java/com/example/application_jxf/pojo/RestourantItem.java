@@ -1,7 +1,7 @@
 package com.example.application_jxf.pojo;
 
 public class RestourantItem {
-    private long _id;
+    private int _id;
     private double x;
     private double y;
     private String title;
@@ -10,7 +10,7 @@ public class RestourantItem {
 
     public RestourantItem() {}
 
-    public RestourantItem(long _id, double x, double y, String title, String description, String url) {
+    public RestourantItem(int _id, double x, double y, String title, String description, String url) {
         this._id = _id;
         this.x = x;
         this.y = y;
@@ -19,11 +19,11 @@ public class RestourantItem {
         this.url = url;
     }
 
-    public long get_id() {
+    public int get_id() {
         return _id;
     }
 
-    public void set_id(long _id) {
+    public void set_id(int _id) {
         this._id = _id;
     }
 

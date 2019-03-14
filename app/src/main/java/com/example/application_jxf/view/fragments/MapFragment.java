@@ -78,7 +78,7 @@ public class MapFragment extends Fragment {
                             .position(new LatLng(item.getX(),item.getY()))
                             .title(item.getTitle())
                             .snippet(item.getDescription()));
-                    marker.setTag(Long.valueOf(item.get_id()));
+                    marker.setTag(item.get_id());
                 }
 
                 // For zooming automatically to the location of the marker
@@ -97,17 +97,11 @@ public class MapFragment extends Fragment {
                 googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                     @Override
                     public void onInfoWindowClick(Marker marker) {
-                        if (marker.getTag() instanceof Long) {
-                            Long l = (Long) marker.getTag();
-                            if (l % 2 == 0){
-//                                first screen
-                                Intent intent = new Intent(getActivity(), BookingActivity.class);
-                                startActivity(intent);
-//                                Toast.makeText(getActivity(), "001", Toast.LENGTH_SHORT).show();
-                            } else {
-//                                2nd screen
-                                Toast.makeText(getActivity(), "002", Toast.LENGTH_SHORT).show();
-                            }
+                        if (marker.getTag() instanceof Number) {
+                            Integer tag = (Integer) marker.getTag();
+                            Intent intent = new Intent(getActivity(), BookingActivity.class);
+                            intent.putExtra("id",tag);
+                            startActivity(intent);
                         }
                     }
                 });
