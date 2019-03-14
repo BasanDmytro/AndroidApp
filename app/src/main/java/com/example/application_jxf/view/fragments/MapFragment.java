@@ -82,7 +82,7 @@ public class MapFragment extends Fragment {
                 }
 
                 // For zooming automatically to the location of the marker
-                LatLng sydney = new LatLng(-34, 151);
+                LatLng sydney = new LatLng(48.015, 0.166);
                 if (list != null && !list.isEmpty()){
                     sydney = new LatLng(list.get(0).getX(), list.get(0).getY());
                 }

@@ -39,8 +39,8 @@ public class BookingActivity extends AppCompatActivity
     int DIALOG_SUCCESS = 5;
     int DIALOG_FAIL = 6;
     int cstYear = 2019;
-    int cstMonth = 03;
-    int cstDay = 25;
+    int cstMonth = 2;
+    int cstDay = 14;
 
     BookingItem item = new BookingItem();
     @Override
@@ -152,6 +152,8 @@ public class BookingActivity extends AppCompatActivity
 //                    add item to db
                     if (ResturantDAO.getInstance().addBookingItem(item)){
                         showDialog(DIALOG_SUCCESS);
+                    } else {
+                        showDialog(DIALOG_FAIL);
                     }
                 }
             });

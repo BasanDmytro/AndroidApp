@@ -18,11 +18,10 @@ public class ResturantDAO {
     public static final String PHOTO_URL = "https://www.worlds50bestbars.com/files/Listing/Images/1//American_Bar-Museum_Bar_2.jpg";
 
     private ResturantDAO() {
-//        TODO rename
-        restourantItems.add(new RestourantItem(1,-34, 151, "Ushamila", "luchaya shashlichka v sidneye", PHOTO_URL));
-        restourantItems.add(new RestourantItem(2,-34.0001, 151, "Ushamila", "luchaya shashlichka v sidneye", PHOTO_URL));
-        restourantItems.add(new RestourantItem(3,-34.0005, 151.0007, "Ushamila", "luchaya shashlichka v sidneye", PHOTO_URL));
-        restourantItems.add(new RestourantItem(0,-34.0003, 151.0004, "Ushamila", "luchaya shashlichka v sidneye", PHOTO_URL));
+        restourantItems.add(new RestourantItem(1,48.015, 0.166, "Pizza", "Best pizza in the city", PHOTO_URL));
+        restourantItems.add(new RestourantItem(2,48.016, 0.167, "Bar", "Good Irish bar for relax or party", PHOTO_URL));
+        restourantItems.add(new RestourantItem(3,48.017, 0.169, "Night Bar", "The best night club in city with famous DJ", PHOTO_URL));
+        restourantItems.add(new RestourantItem(0,48.015, 0.171, "Cafe", "Cafe with pretty good espresso", PHOTO_URL));
     }
 
     public List<RestourantItem> getRestourantItems() {
@@ -37,9 +36,10 @@ public class ResturantDAO {
         if (!bookingItems.isEmpty()) {
             for (BookingItem bi : bookingItems) {
                 if (bi.getRestourantName().equals(bookingItem.getRestourantName())) {
-                    if (bi.getBookingDate().equals(bookingItem.getBookingDate())) {
+                    if (bi.getBookingDate().getYear() == bookingItem.getBookingDate().getYear()
+                            && bi.getBookingDate().getMonth() == bookingItem.getBookingDate().getMonth()
+                            && bi.getBookingDate().getDay() == bookingItem.getBookingDate().getDay()) {
                         if (bi.getTableNumber() == bookingItem.getTableNumber()) {
-//                            TODO change formula
                             if ((bi.getHour() >= bookingItem.getHour() && bi.getHour() <= bookingItem.getHour() + bookingItem.getDuration())
                                     || bi.getHour() <= bookingItem.getHour() && bi.getHour() + bi.getDuration() >= bookingItem.getHour()) {
                                 return false;
