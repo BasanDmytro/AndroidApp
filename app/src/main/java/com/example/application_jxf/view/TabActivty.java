@@ -15,7 +15,9 @@ import android.widget.Toast;
 
 import com.example.application_jxf.R;
 import com.example.application_jxf.adapters.ViewPagerAdapter;
+import com.example.application_jxf.dao.ResturantDAO;
 import com.example.application_jxf.pojo.BookingItem;
+import com.example.application_jxf.pojo.RestourantItem;
 import com.example.application_jxf.view.fragments.MapFragment;
 import com.example.application_jxf.view.fragments.UserFragment;
 
@@ -105,12 +107,8 @@ public class TabActivty extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        mapFragment = new MapFragment();
-        List<BookingItem> list = new ArrayList<>();
-        list.add(new BookingItem("Booking1", "", new Date(), PHOTO_URL));
-        list.add(new BookingItem("Booking2", "", new Date(), PHOTO_URL));
-        list.add(new BookingItem("Booking3", "", new Date(), PHOTO_URL));
-        userFragment = UserFragment.newInstance(list);
+        mapFragment = MapFragment.newInstance(ResturantDAO.getInstance().getRestourantItems());
+        userFragment = UserFragment.newInstance(ResturantDAO.getInstance().getBookingItems());
 //        fragmentNavigationDrawer = new FragmentNavigationDrawer();
         viewPagerAdapter.addFragment(mapFragment);
         viewPagerAdapter.addFragment(userFragment);

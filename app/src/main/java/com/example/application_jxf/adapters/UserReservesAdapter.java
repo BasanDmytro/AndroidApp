@@ -38,11 +38,13 @@ public class UserReservesAdapter extends RecyclerView.Adapter<UserReservesAdapte
 
     @Override
     public void onBindViewHolder(@NonNull BookingHolder bookingHolder, int i) {
-        bookingHolder.bookingTime.setText(list.get(i).getBookingDate().toLocaleString());
-        bookingHolder.bookingName.setText(list.get(i).getName());
-//        Picasso.get().load("https://www.worlds50bestbars.com/files/Listing/Images/1//American_Bar-Museum_Bar_2.jpg")
-//                .centerInside().fit().into(bookingHolder.img);
-        Picasso.get().load(list.get(i).getUrl())
+        BookingItem item = list.get(i);
+        long timeTo = item.getHour()+item.getDuration();
+        String bookingTime = item.getBookingDate().toLocaleString() + " From " + item.getHour() + " To " + timeTo;
+        String bookingName = item.getRestourantName() + " table #" + item.getTableNumber();
+        bookingHolder.bookingTime.setText(bookingTime);
+        bookingHolder.bookingName.setText(bookingName);
+        Picasso.get().load(item.getUrl())
                 .centerInside().fit().into(bookingHolder.img);
     }
 

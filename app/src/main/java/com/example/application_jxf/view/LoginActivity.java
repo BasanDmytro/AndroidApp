@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.application_jxf.R;
+import com.example.application_jxf.pojo.RestourantItem;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -81,7 +82,8 @@ public class LoginActivity extends AppCompatActivity {
         LoginActivity.this.startActivity(intent);
 
 //        startActivity(intent);
-        finish();
+//        finish();
+        this.finish();
     }
 
     @Override

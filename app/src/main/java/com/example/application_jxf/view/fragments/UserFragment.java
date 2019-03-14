@@ -33,6 +33,7 @@ import static com.example.application_jxf.view.TabActivty.GOOGLE_ACCOUNT;
 
 public class UserFragment extends Fragment {
 
+    private GoogleSignInAccount googleSignInAccount = null;
     private List<BookingItem> list;
     private View view;
     private UserReservesAdapter adapter;
@@ -95,7 +96,8 @@ public class UserFragment extends Fragment {
     }
 
     private void setDataOnView() {
-        GoogleSignInAccount googleSignInAccount = getActivity().getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
+        if (googleSignInAccount == null)
+            googleSignInAccount = getActivity().getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
         Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
         profileName.setText(googleSignInAccount.getDisplayName());
         profileEmail.setText(googleSignInAccount.getEmail());
